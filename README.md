@@ -2,6 +2,7 @@
 1. coding-assessment based gradle spring boot 3.1.2 Rest application, java 17
 2. With a mysql database and Flyway migration files located resources/db/migrations
 3. Security is Json Web Token, implemented in the security package
+4. Project includes one unit test AuthServiceTest
 
 # Setting up and running the project
 1. Make git clone from https://github.com/baaroncpp/coding-assessment.git to your preferred location
