@@ -11,9 +11,9 @@ import lombok.Setter;
  * @Date 7/29/23
  **/
 @Entity
-@Table(name = "t_bank_branch", schema = "core")
+@Table(name = "t_bank_branch"/*, schema = "core"*/)
 @Setter
-public class BankBranch extends BaseEntity{
+public class BankBranch extends AuditEntity{
     private String branchCode;
     private String branchName;
 

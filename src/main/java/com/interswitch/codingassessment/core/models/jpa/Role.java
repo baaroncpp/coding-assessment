@@ -3,6 +3,9 @@ package com.interswitch.codingassessment.core.models.jpa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -11,8 +14,11 @@ import lombok.Setter;
  * @Date 7/28/23
  **/
 @Entity
-@Table(name = "t_role", schema = "core")
+@Table(name = "t_role"/*, schema = "core"*/)
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Role extends BaseEntity{
     private String roleName;
     private String codeName;

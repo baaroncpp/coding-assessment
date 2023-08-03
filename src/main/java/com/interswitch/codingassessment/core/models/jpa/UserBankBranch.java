@@ -10,13 +10,13 @@ import lombok.Setter;
  **/
 @Entity
 @Table(name = "t_user_bank_branch",
-        schema = "core",
+        /*schema = "core",*/
         uniqueConstraints =
                 {
                         @UniqueConstraint(columnNames = {"user_id", "bank_branch_id"})
                 })
 @Setter
-public class UserBankBranch extends BaseEntity{
+public class UserBankBranch extends AuditEntity{
     private User user;
     private BankBranch bankBranch;
 

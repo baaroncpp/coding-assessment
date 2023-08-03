@@ -1,5 +1,5 @@
 CREATE TABLE t_role(
-    id BIGSERIAL PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     created_on TIMESTAMP DEFAULT now(),
     modified_on TIMESTAMP,
     role_name VARCHAR(50) NOT NULL UNIQUE,
@@ -8,7 +8,7 @@ CREATE TABLE t_role(
 );
 
 CREATE TABLE t_user(
-    id BIGSERIAL PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     created_on TIMESTAMP DEFAULT now(),
     modified_on TIMESTAMP,
     username VARCHAR(50) NOT NULL UNIQUE,
@@ -22,31 +22,37 @@ CREATE TABLE t_user(
 );
 
 CREATE TABLE t_bank_branch(
-    id BIGSERIAL PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     created_on TIMESTAMP DEFAULT now(),
     modified_on TIMESTAMP,
+    created_by_id BIGINT NOT NULL REFERENCES t_user(id),
+    modified_by_id BIGINT REFERENCES t_user(id),
     branch_code VARCHAR(50) NOT NULL UNIQUE,
     branch_name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE t_institution(
-    id BIGSERIAL PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     created_on TIMESTAMP DEFAULT now(),
     modified_on TIMESTAMP,
+    created_by_id BIGINT NOT NULL REFERENCES t_user(id),
+    modified_by_id BIGINT REFERENCES t_user(id),
     institution_code VARCHAR(50) NOT NULL UNIQUE,
     institution_name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE t_user_bank_branch(
-    id BIGSERIAL PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     created_on TIMESTAMP DEFAULT now(),
     modified_on TIMESTAMP,
+    created_by_id BIGINT NOT NULL REFERENCES t_user(id),
+    modified_by_id BIGINT REFERENCES t_user(id),
     user_id BIGINT REFERENCES t_user(id),
     bank_branch_id BIGINT REFERENCES t_bank_branch(id)
 );
 
 CREATE TABLE t_permission(
-    id BIGSERIAL PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     created_on TIMESTAMP DEFAULT now(),
     modified_on TIMESTAMP,
     role_id BIGINT REFERENCES t_role(id),
